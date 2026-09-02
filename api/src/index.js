@@ -17,6 +17,7 @@ function requireAdmin(c) {
 }
 
 app.use('*', async (c, next) => { await cors({ origin: origin => [c.env.ALLOWED_ORIGIN, 'http://localhost:4173', 'http://127.0.0.1:4173'].includes(origin) ? origin : '', allowHeaders: ['Content-Type', 'x-admin-key'], allowMethods: ['GET', 'POST', 'PATCH', 'DELETE', 'OPTIONS'] })(c, next); });
+app.options('*', c => c.body(null, 204));
 app.get('/health', c => c.json({ ok: true, service: 'flashdeal-api' }));
 app.get('/catalog', async c => c.json(await query(c.env, `SELECT p.*, b.name AS brand_name, b.logo_url, c.name AS category_name, c.slug AS category_slug, (SELECT image_url FROM product_images i WHERE i.product_id=p.id ORDER BY i.is_primary DESC, i.sort_order LIMIT 1) AS image_url FROM products p JOIN brands b ON b.id=p.brand_id JOIN categories c ON c.id=p.category_id WHERE p.is_active=1 ORDER BY p.created_at DESC`)));
 app.get('/categories', async c => c.json(await query(c.env, 'SELECT * FROM categories WHERE is_active=1 ORDER BY sort_order')));
