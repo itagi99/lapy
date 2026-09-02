@@ -3,7 +3,7 @@ main = "src/index.js"
 compatibility_date = "2026-09-02"
 
 [vars]
-ALLOWED_ORIGIN = "https://YOUR-DOMAIN.example"
+ALLOWED_ORIGIN = "https://itagi99.github.io"
 TURSO_DATABASE_URL = "libsql://retech-itagi99.aws-ap-south-1.turso.io"
 
 # Configure these as encrypted secrets, never in this file:
