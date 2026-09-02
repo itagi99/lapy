@@ -4,6 +4,7 @@ compatibility_date = "2026-09-02"
 
 [vars]
 ALLOWED_ORIGIN = "https://YOUR-DOMAIN.example"
+TURSO_DATABASE_URL = "libsql://retech-itagi99.aws-ap-south-1.turso.io"
 
 # Configure these as encrypted secrets, never in this file:
 # wrangler secret put TURSO_DATABASE_URL
